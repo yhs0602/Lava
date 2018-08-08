@@ -364,7 +364,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	ZeroMemory (&window, sizeof (GL_Window));							// Make Sure Memory Is Zeroed
 	window.keys					= &keys;								// Window Key Structure
 	window.init.application		= &application;							// Window Application
-	window.init.title			= "Lesson 48: NeHe & Terence J. Grant's ArcBall Rotation Tutorial";
+	window.init.title				= "Lesson 48: NeHe & Terence J. Grant's ArcBall Rotation Tutorial";
 	window.init.width			= 640;									// Window Width
 	window.init.height			= 480;									// Window Height
 	window.init.bitsPerPixel	= 32;									// Bits Per Pixel

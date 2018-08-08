@@ -5,9 +5,9 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = Earth_private.res
-OBJ      = NeHeGL.o Lesson48.o $(RES)
-LINKOBJ  = NeHeGL.o Lesson48.o $(RES)
-LIBS     = -L"D:/양현서/CODE/Dev-Cpp/MinGW64/lib32" -L"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -mwindows -lopengl32 -m32
+OBJ      = NeHeGL.o Lesson48.o ArcBall.o $(RES)
+LINKOBJ  = NeHeGL.o Lesson48.o ArcBall.o $(RES)
+LIBS     = -L"D:/양현서/CODE/Dev-Cpp/MinGW64/lib32" -L"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -mwindows ../../Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32/libopengl32.a ../../Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32/libglu32.a -m32
 INCS     = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Earth.exe
@@ -30,6 +30,9 @@ NeHeGL.o: NeHeGL.cpp
 
 Lesson48.o: Lesson48.cpp
 	$(CPP) -c Lesson48.cpp -o Lesson48.o $(CXXFLAGS)
+
+ArcBall.o: ArcBall.cpp
+	$(CPP) -c ArcBall.cpp -o ArcBall.o $(CXXFLAGS)
 
 Earth_private.res: Earth_private.rc 
 	$(WINDRES) -i Earth_private.rc -F pe-i386 --input-format=rc -o Earth_private.res -O coff 
