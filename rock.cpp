@@ -10,4 +10,4 @@ Rock::Rock(char* nam, float dens, float melting, float conduct, float capa)
 }
 static Rock * Rock::air=new Rock("air", 0.001f, -100, 0.001f, 0.831f);
 static Rock * Rock::rigid=new Rock("rigid", 100f, 100000, 0, 10000f);
-
+static Rock * Rock::granite=new Rock("granite",2.75f,1215,0.03f,790);

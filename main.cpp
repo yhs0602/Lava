@@ -14,6 +14,7 @@
 
 #include "math.h"												    // NEW: Needed For Sqrtf
 #include "ArcBall.h"												// NEW: ArcBall Header
+#include "block.hpp"
 /*
 #pragma comment( lib, "opengl32.lib" )								// Search For OpenGL32.lib While Linking
 #pragma comment( lib, "glu32.lib" )									// Search For GLu32.lib While Linking
@@ -50,6 +51,8 @@ bool        isClicked  = false;										// NEW: Clicking The Mouse?
 bool        isRClicked = false;										// NEW: Clicking The Right Mouse Button?
 bool        isDragging = false;					                    // NEW: Dragging The Mouse?
 
+#define DIM 25
+Block * blocks[DIM][DIM][DIM];
 
 BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User Initialiazation Goes Here
 {
@@ -76,6 +79,16 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
 
 	glEnable(GL_COLOR_MATERIAL);									// Enable Color Material
 
+	 for(int i=0;i<DIM;++i)
+    {
+    	for(int j=0;j<DIM;++j)
+    	{
+    		for(int k=0;k<DIM;++k)
+    		{
+    			blocks[i][j][k]=new Block(Rock::granite);
+			}
+		}
+	}
 	return TRUE;													// Return TRUE (Initialization Successful)
 }
 
@@ -151,16 +164,33 @@ void Torus(float MinorRadius, float MajorRadius)					// Draw A Torus With Normal
 	glEnd();														// Done Torus
 }
 
-GLint indices={
-
-
+GLuint indices[]={
+0,1,2,
+0,2,3,
+2,1,5,
+2,5,6,
+2,6,7,
+2,7,3,
+6,5,4,
+6,4,7,
+7,4,0,
+7,0,3
 };
 void Draw (void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer
 	glLoadIdentity();												// Reset The Current Modelview Matrix
 	glTranslatef(-1.5f,0.0f,-6.0f);									// Move Left 1.5 Units And Into The Screen 6.0
-    
+    for(int i=0;i<DIM;++i)
+    {
+    	for(int j=0;j<DIM;++j)
+    	{
+    		for(int k=0;k<DIM;++k)
+    		{
+    			blocks[i][j][k]->draw(i,j,k);
+			}
+		}
+	}
     glPushMatrix();													// NEW: Prepare Dynamic Transform
 //    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
 	glColor3f(0.75f,0.75f,1.0f);

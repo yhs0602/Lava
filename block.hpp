@@ -10,5 +10,6 @@ class Block
 		Rock *rock;
 		bool solid;
 		void update();
+		void draw(int x,int y, int j);
 };
 #endif

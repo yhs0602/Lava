@@ -12,6 +12,7 @@ class Rock
 		char * name;
 		static Rock *air;
 		static Rock* rigid;
+		static Rock* granite;
 };
 
 #endif
