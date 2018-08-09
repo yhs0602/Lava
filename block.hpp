@@ -5,10 +5,10 @@
 class Block
 {
 	public:
-		Block();
+		Block(Rock *rck);
 		float temperature;
-		Rock rock;
+		Rock *rock;
 		bool solid;
 		void update();
-}
+};
 #endif
