@@ -151,12 +151,16 @@ void Torus(float MinorRadius, float MajorRadius)					// Draw A Torus With Normal
 	glEnd();														// Done Torus
 }
 
+GLint indices={
+
+
+};
 void Draw (void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer
 	glLoadIdentity();												// Reset The Current Modelview Matrix
 	glTranslatef(-1.5f,0.0f,-6.0f);									// Move Left 1.5 Units And Into The Screen 6.0
-
+    
     glPushMatrix();													// NEW: Prepare Dynamic Transform
 //    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
 	glColor3f(0.75f,0.75f,1.0f);
