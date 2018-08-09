@@ -91,14 +91,15 @@ void Update (DWORD milliseconds)									// Perform Motion Updates Here
 
 	if (g_keys->keyDown [VK_F1] == TRUE)							// Is F1 Being Pressed?
 		ToggleFullscreen (g_window);								// Toggle Fullscreen Mode
-
+/*
     if (isRClicked)													// If Right Mouse Clicked, Reset All Rotations
     {
 		Matrix3fSetIdentity(&LastRot);								// Reset Rotation
 		Matrix3fSetIdentity(&ThisRot);								// Reset Rotation
         Matrix4fSetRotationFromMatrix3f(&Transform, &ThisRot);		// Reset Rotation
     }
-
+*/
+/*
     if (!isDragging)												// Not Dragging
     {
         if (isClicked)												// First Click
@@ -122,6 +123,7 @@ void Update (DWORD milliseconds)									// Perform Motion Updates Here
         else														// No Longer Dragging
             isDragging = false;
     }
+    */
 }
 
 void Torus(float MinorRadius, float MajorRadius)					// Draw A Torus With Normals
@@ -156,16 +158,16 @@ void Draw (void)
 	glTranslatef(-1.5f,0.0f,-6.0f);									// Move Left 1.5 Units And Into The Screen 6.0
 
     glPushMatrix();													// NEW: Prepare Dynamic Transform
-    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
+//    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
 	glColor3f(0.75f,0.75f,1.0f);
-	Torus(0.30f,1.00f);
+	//Torus(0.30f,1.00f);
     glPopMatrix();													// NEW: Unapply Dynamic Transform
 
 	glLoadIdentity();												// Reset The Current Modelview Matrix
 	glTranslatef(1.5f,0.0f,-6.0f);									// Move Right 1.5 Units And Into The Screen 7.0
 
     glPushMatrix();													// NEW: Prepare Dynamic Transform
-    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
+    //glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
 	glColor3f(1.0f,0.75f,0.75f);
 	gluSphere(quadratic,1.3f,20,20);
     glPopMatrix();													// NEW: Unapply Dynamic Transform
