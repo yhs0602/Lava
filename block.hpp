@@ -2,6 +2,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 #include "rock.hpp"
+#include "geom.h"
 class Block
 {
 	public:
@@ -11,5 +12,6 @@ class Block
 		bool solid;
 		void update();
 		void draw(int x,int y, int j);
+		vec velocity;
 };
 #endif
