@@ -13,5 +13,7 @@ class Block
 		void update();
 		void draw(int x,int y, int j);
 		vec velocity;
+		float calculateHeat();
+		float 
 };
 #endif
