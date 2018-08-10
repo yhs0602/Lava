@@ -32,7 +32,7 @@ void Block::update()
 Block::Block(ivec pos,Rock* rck)
 {
 	this->rock=rck;
-	this->temperature=2000; //K
+	this->temperature=50; //K
 	this->solid=false;
 	this->pos=pos;
 }
