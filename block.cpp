@@ -133,5 +133,5 @@ void Block:: draw(int x,int y, int z)
 		x,y+1,z+1
 	};
 	glVertexPointer(sizeof(verts)/sizeof(GLfloat),GL_FLOAT,3,verts);
-	glDrawElements(GL_TRIANGLES,sizeof(indices)/sizeof(GLuint),GL_INT,indices);
+	glDrawElements(GL_TRIANGLES,sizeof(indices)/sizeof(GLuint),GL_UNSIGNED_BYTE,indices);
 }

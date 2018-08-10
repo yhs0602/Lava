@@ -78,6 +78,8 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
 
 	glEnable(GL_COLOR_MATERIAL);									// Enable Color Material
 
+	glEnableClientState(GL_VERTEX_ARRAY);
+	
 	 for(int i=0;i<DIM;++i)
     {
     	for(int j=0;j<DIM;++j)
@@ -178,7 +180,7 @@ void Draw (void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer
 	glLoadIdentity();												// Reset The Current Modelview Matrix
-	glTranslatef(-1.5f,0.0f,-6.0f);									// Move Left 1.5 Units And Into The Screen 6.0
+	glTranslatef(0.0f,0.0f,-40.0f);									// Move Left 1.5 Units And Into The Screen 6.0
     for(int i=0;i<DIM;++i)
     {
     	for(int j=0;j<DIM;++j)
@@ -189,20 +191,20 @@ void Draw (void)
 			}
 		}
 	}
-    glPushMatrix();													// NEW: Prepare Dynamic Transform
+    //glPushMatrix();													// NEW: Prepare Dynamic Transform
 //    glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
-	glColor3f(0.75f,0.75f,1.0f);
+	//glColor3f(0.75f,0.75f,1.0f);
 	//Torus(0.30f,1.00f);
-    glPopMatrix();													// NEW: Unapply Dynamic Transform
+    //glPopMatrix();													// NEW: Unapply Dynamic Transform
 
-	glLoadIdentity();												// Reset The Current Modelview Matrix
-	glTranslatef(1.5f,0.0f,-6.0f);									// Move Right 1.5 Units And Into The Screen 7.0
+	//glLoadIdentity();												// Reset The Current Modelview Matrix
+	//glTranslatef(1.5f,0.0f,-6.0f);									// Move Right 1.5 Units And Into The Screen 7.0
 
-    glPushMatrix();													// NEW: Prepare Dynamic Transform
+    //glPushMatrix();													// NEW: Prepare Dynamic Transform
     //glMultMatrixf(Transform.M);										// NEW: Apply Dynamic Transform
-	glColor3f(1.0f,0.75f,0.75f);
-	gluSphere(quadratic,1.3f,20,20);
-    glPopMatrix();													// NEW: Unapply Dynamic Transform
+	//glColor3f(1.0f,0.75f,0.75f);
+	//gluSphere(quadratic,1.3f,20,20);
+//    glPopMatrix();													// NEW: Unapply Dynamic Transform
 
 	glFlush ();														// Flush The GL Rendering Pipeline
 }
