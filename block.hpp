@@ -3,17 +3,33 @@
 #define BLOCK_H
 #include "rock.hpp"
 #include "geom.h"
+
+#define DIM 25
 class Block
 {
 	public:
-		Block(Rock *rck);
+		Block(ivec pos, Rock *rck);
 		float temperature;
 		Rock *rock;
 		bool solid;
+		float pressure;
 		void update();
 		void draw(int x,int y, int j);
 		vec velocity;
-		float calculateHeat();
-		float 
+		float calculateHeats();
+		float calculatePressure();
+		vec calculateNetForce();
+		ivec pos;
+		float getPressure(int face);
+};
+
+enum FACES
+{
+	TOP,
+	BOTTOM,
+	RIGHT,
+	LEFT,
+	FRONT,
+	BACK
 };
 #endif

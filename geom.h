@@ -6,7 +6,8 @@
 #ifndef _GEOM_H
 #define _GEOM_H
 #include<math.h>
-
+#include <stdlib.h>
+#include <memory.h>
 typedef unsigned int uint;
 typedef unsigned char uchar;
 #define loopi(n) for(int i=0;i<n;i++)

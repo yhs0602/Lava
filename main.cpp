@@ -51,7 +51,6 @@ bool        isClicked  = false;										// NEW: Clicking The Mouse?
 bool        isRClicked = false;										// NEW: Clicking The Right Mouse Button?
 bool        isDragging = false;					                    // NEW: Dragging The Mouse?
 
-#define DIM 25
 Block * blocks[DIM][DIM][DIM];
 
 BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User Initialiazation Goes Here
@@ -85,7 +84,7 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
     	{
     		for(int k=0;k<DIM;++k)
     		{
-    			blocks[i][j][k]=new Block(Rock::granite);
+    			blocks[i][j][k]=new Block(ivec(i,j,k),Rock::granite);
 			}
 		}
 	}
@@ -103,7 +102,18 @@ void Update (DWORD milliseconds)									// Perform Motion Updates Here
 		TerminateApplication (g_window);							// Terminate The Program
 
 	if (g_keys->keyDown [VK_F1] == TRUE)							// Is F1 Being Pressed?
-		ToggleFullscreen (g_window);								// Toggle Fullscreen Mode
+		ToggleFullscreen (g_window);						// Toggle Fullscreen Mode
+		
+	for(int i=0;i<DIM;++i)
+    {
+    	for(int j=0;j<DIM;++j)
+    	{
+    		for(int k=0;k<DIM;++k)
+    		{
+    			blocks[i][j][k]->update();
+			}
+		}
+	}
 /*
     if (isRClicked)													// If Right Mouse Clicked, Reset All Rotations
     {
@@ -164,18 +174,6 @@ void Torus(float MinorRadius, float MajorRadius)					// Draw A Torus With Normal
 	glEnd();														// Done Torus
 }
 
-GLuint indices[]={
-0,1,2,
-0,2,3,
-2,1,5,
-2,5,6,
-2,6,7,
-2,7,3,
-6,5,4,
-6,4,7,
-7,4,0,
-7,0,3
-};
 void Draw (void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer

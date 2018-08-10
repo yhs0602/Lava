@@ -10,6 +10,8 @@ class Rock
 		float conductivity;
 		float capacity;
 		char * name;
+		bool shouldBeSolid(float temp, float press);
+		
 		static Rock *air;
 		static Rock* rigid;
 		static Rock* granite;
