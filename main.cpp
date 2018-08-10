@@ -181,6 +181,7 @@ void Draw (void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer
 	glLoadIdentity();												// Reset The Current Modelview Matrix
 	glTranslatef(0.0f,0.0f,-40.0f);									// Move Left 1.5 Units And Into The Screen 6.0
+	glColor3f(1,0,0);
     for(int i=0;i<DIM;++i)
     {
     	for(int j=0;j<DIM;++j)

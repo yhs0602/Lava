@@ -107,7 +107,7 @@ float Block::getPressure(int face)
 }
 #include <gl/gl.h>
 
-GLuint indices[]={
+GLubyte indices[]={
 0,1,2,
 0,2,3,
 2,1,5,
@@ -132,6 +132,14 @@ void Block:: draw(int x,int y, int z)
 		x+1,y+1,z+1,
 		x,y+1,z+1
 	};
-	glVertexPointer(sizeof(verts)/sizeof(GLfloat),GL_FLOAT,3,verts);
-	glDrawElements(GL_TRIANGLES,sizeof(indices)/sizeof(GLuint),GL_UNSIGNED_BYTE,indices);
+	if(solid)
+	{
+		glColor3f(0.5f,0.5f, 0.5f);
+	}
+	else
+	{
+		glColor3f(1,0,0);
+	}
+	glVertexPointer(3,GL_FLOAT,0,verts);
+	glDrawElements(GL_TRIANGLES,sizeof(indices)/sizeof(GLubyte)/3,GL_UNSIGNED_BYTE,indices);
 }
