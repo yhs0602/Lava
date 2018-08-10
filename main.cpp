@@ -86,7 +86,11 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
     	{
     		for(int k=0;k<DIM;++k)
     		{
-    			blocks[i][j][k]=new Block(ivec(i,j,k),Rock::granite);
+    			blocks[i][j][k]=new Block(ivec(i,j,k),(rand()%3==0)?Rock::air : Rock::granite);
+    			if(blocks[i][j][k]->rock==Rock::air)
+    			{
+    				blocks[i][j][k]->temperature=1;
+				}
 			}
 		}
 	}

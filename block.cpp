@@ -7,6 +7,10 @@ Block *getBlock(ivec x);
 extern Block *blocks[DIM][DIM][DIM]; 
 void Block::update()
 {
+	if(this->rock==Rock::air)
+	{
+		return;
+	}
 	const float conductivity=this->rock->conductivity;
     const float capacity=this->rock->capacity;
     float q=calculateHeats();
@@ -20,6 +24,7 @@ void Block::update()
 	{
 		this->solid=false;
 	}
+	
 	vec netForce=calculateNetForce();
 	this->velocity.add(netForce);
 }

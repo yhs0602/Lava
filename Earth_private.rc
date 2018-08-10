@@ -8,8 +8,8 @@
 // TO CHANGE VERSION INFORMATION, EDIT PROJECT OPTIONS...
 //
 1 VERSIONINFO
-FILEVERSION 1,0,0,42
-PRODUCTVERSION 1,0,0,42
+FILEVERSION 1,0,0,46
+PRODUCTVERSION 1,0,0,46
 FILETYPE VFT_APP
 {
   BLOCK "StringFileInfo"
@@ -17,14 +17,14 @@ FILETYPE VFT_APP
     BLOCK "040904E4"
     {
       VALUE "CompanyName", ""
-      VALUE "FileVersion", "1.0.0.42"
-      VALUE "FileDescription", "Developed using the Dev-C++ IDE"
+      VALUE "FileVersion", "1.0.0.46"
+      VALUE "FileDescription", "Earth Lava Simulator"
       VALUE "InternalName", ""
       VALUE "LegalCopyright", ""
       VALUE "LegalTrademarks", ""
       VALUE "OriginalFilename", ""
       VALUE "ProductName", ""
-      VALUE "ProductVersion", "1.0.0.42"
+      VALUE "ProductVersion", "1.0.0.46"
     }
   }
   BLOCK "VarFileInfo"
