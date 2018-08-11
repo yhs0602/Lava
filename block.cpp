@@ -112,6 +112,7 @@ float Block::getPressure(int face)
 }
 #include <gl/gl.h>
 
+extern int texture[];
 GLubyte indices[]={
 0,1,2,
 0,2,3,
@@ -124,6 +125,9 @@ GLubyte indices[]={
 7,4,0,
 7,0,3
 };
+GLfloat texCoords[]={
+	0,0,1,0,1,1,1,0
+}
 
 void Block:: draw(int x,int y, int z)
 {
@@ -145,6 +149,8 @@ void Block:: draw(int x,int y, int z)
 	{
 		glColor3f(1,0,0);
 	}
+	glBindTexture(GL_TEXTURE_2D,texture[LAVA]);
 	glVertexPointer(3,GL_FLOAT,0,verts);
+	glTexCoordPointer(2,GL_FLOAT,0,texCoords);
 	glDrawElements(GL_TRIANGLES,sizeof(indices)/sizeof(GLubyte)/3,GL_UNSIGNED_BYTE,indices);
 }

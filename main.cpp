@@ -53,6 +53,13 @@ bool        isDragging = false;					                    // NEW: Dragging The Mou
 
 Block * blocks[DIM][DIM][DIM];
 
+enum TEXTURES
+{
+	LAVA,
+	NUM_TEXTURES
+}
+int texture[NUM_TEXTURES];
+
 BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User Initialiazation Goes Here
 {
 	g_window	= window;
@@ -79,6 +86,12 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
 	glEnable(GL_COLOR_MATERIAL);									// Enable Color Material
 
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_TEXCOORD_ARRAY);
+	
+	glEnable(GL_TEXTURE);
+	
+	glGenTextures(END,texture);
+	
 	
 	 for(int i=0;i<DIM;++i)
     {
@@ -213,3 +226,65 @@ void Draw (void)
 
 	glFlush ();														// Flush The GL Rendering Pipeline
 }
+
+
+int LoadGLTextures()
+{
+	GLubyte *data=NULL;
+	int width=0,height=0;
+	//char FileName[64];
+	//glGenTextures(NUM_TEXTURES,&texture[0]);
+	for(int i=0;i<NUM_TEXTURES;i++)
+	{
+		//sprintf(FileName,"Data\\%s\0",TexFileNames[i]);
+		//FileName[63]='\0';
+		if(data=LoadBmp(TexFileNames[i],&width,&height))
+		{
+			glBindTexture(GL_TEXTURE_2D,texture[i]);
+			glTexImage2D(GL_TEXTURE_2D,0,3,width,height,0,GL_RGB,GL_UNSIGNED_BYTE,data);
+			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+			if(data)free(data);
+			data=NULL;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	return TRUE;
+}
+
+GLubyte *LoadBmp(const char *Path, int *Width, int *Height)
+{ 
+	HANDLE hFile;
+	DWORD FileSize, dwRead; 
+	BITMAPFILEHEADER *fh=NULL; 
+	BITMAPINFOHEADER *ih; 
+	BYTE *pRaster; 
+	hFile=CreateFileA(Path,GENERIC_READ,0,NULL, OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL); 
+	if (hFile==INVALID_HANDLE_VALUE) 
+	{ 
+		return NULL; 
+	} 
+	FileSize=GetFileSize(hFile,NULL); 
+	fh=(BITMAPFILEHEADER *)malloc(FileSize); 
+	ReadFile(hFile,fh,FileSize,&dwRead,NULL); 
+	CloseHandle(hFile); 
+	int len = FileSize - fh->bfOffBits;
+	pRaster=(GLubyte *)malloc(len); 
+	memcpy(pRaster, (BYTE *)fh+fh->bfOffBits, len); // RGB로 순서를 바꾼다. 
+	for (BYTE *p=pRaster;p < pRaster + len - 3;p+=3) 
+	{
+		BYTE b = *p; 
+		*p = *(p+2); 
+		*(p+2) = b; 
+	} 
+	ih=(BITMAPINFOHEADER *)((PBYTE)fh+sizeof(BITMAPFILEHEADER)); 
+	*Width=ih->biWidth;
+	*Height=ih->biHeight; 
+	free(fh); 
+	return pRaster; 
+}
+
+

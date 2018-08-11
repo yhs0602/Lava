@@ -5,6 +5,12 @@
 #include "geom.h"
 
 #define DIM 25
+enum TEXTURES
+{
+	LAVA,
+	END
+}
+extern int textures[END];
 class Block
 {
 	public:
