@@ -127,7 +127,10 @@ GLubyte indices[]={
 
 void Block:: draw(int x,int y, int z)
 {
-	GLfloat verts[]={
+    x=pos.x;
+    y=pos.y;
+    z=pos.z;
+   GLfloat verts[]={
 		x,y,z,
 		x+1,y,z,
 		x+1,y+1,z,
