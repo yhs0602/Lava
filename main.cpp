@@ -53,12 +53,18 @@ bool        isDragging = false;					                    // NEW: Dragging The Mou
 
 Block * blocks[DIM][DIM][DIM];
 
-enum TEXTURES
-{
-	LAVA,
-	NUM_TEXTURES
-}
-int texture[NUM_TEXTURES];
+
+//enum TEXTURES
+//{
+//	LAVA,
+//	NUM_TEXTURES
+//}
+GLuint texture[NUM_TEXTURES];
+
+char * TexFileNames[]={
+	"lava.bmp",
+	"rock.bmp"
+};
 
 BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User Initialiazation Goes Here
 {
@@ -86,12 +92,9 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
 	glEnable(GL_COLOR_MATERIAL);									// Enable Color Material
 
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_TEXCOORD_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	
-	glEnable(GL_TEXTURE);
-	
-	glGenTextures(END,texture);
-	
+	glEnable(GL_TEXTURE_2D);	
 	
 	 for(int i=0;i<DIM;++i)
     {
@@ -197,7 +200,7 @@ void Draw (void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);				// Clear Screen And Depth Buffer
 	glLoadIdentity();												// Reset The Current Modelview Matrix
-	glTranslatef(0.0f,0.0f,-40.0f);									// Move Left 1.5 Units And Into The Screen 6.0
+	glTranslatef(-10.0f,-10.0f,-40.0f);									// Move Left 1.5 Units And Into The Screen 6.0
 	glColor3f(1,0,0);
     for(int i=0;i<DIM;++i)
     {
@@ -228,12 +231,14 @@ void Draw (void)
 }
 
 
+
+GLubyte *LoadBmp(const char *Path, int *Width, int *Height);
 int LoadGLTextures()
 {
 	GLubyte *data=NULL;
 	int width=0,height=0;
 	//char FileName[64];
-	//glGenTextures(NUM_TEXTURES,&texture[0]);
+	glGenTextures(NUM_TEXTURES,&texture[0]);
 	for(int i=0;i<NUM_TEXTURES;i++)
 	{
 		//sprintf(FileName,"Data\\%s\0",TexFileNames[i]);

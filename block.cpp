@@ -146,11 +146,13 @@ void Block:: draw(int x,int y, int z)
 	};
 	if(solid)
 	{
-		glColor3f(0.5f,0.5f, 0.5f);
+		glBindTexture(GL_TEXTURE_2D,texture[ROCK]);
+		//glColor3f(0.5f,0.5f, 0.5f);
 	}
 	else
 	{
-		glColor3f(1,0,0);
+		glBindTexture(GL_TEXTURE_2D,texture[LAVA]);
+		//glColor3f(1,0,0);
 	}
 	glBindTexture(GL_TEXTURE_2D,texture[LAVA]);
 	glVertexPointer(3,GL_FLOAT,0,verts);

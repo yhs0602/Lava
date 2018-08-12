@@ -8,10 +8,12 @@
 enum TEXTURES
 {
 	LAVA,
+	ROCK,
 	NUM_TEXTURES
 };
 
-extern int texture[NUM_TEXTURES];
+#include <GL/gl.h>
+extern GLuint texture[NUM_TEXTURES];
 class Block
 {
 	public:
