@@ -5,8 +5,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = Earth_private.res
-OBJ      = NeHeGL.o ArcBall.o block.o rock.o main.o $(RES)
-LINKOBJ  = NeHeGL.o ArcBall.o block.o rock.o main.o $(RES)
+OBJ      = NeHeGL.o ArcBall.o block.o rock.o main.o sclog4c/sclog4c.o $(RES)
+LINKOBJ  = NeHeGL.o ArcBall.o block.o rock.o main.o sclog4c/sclog4c.o $(RES)
 LIBS     = -L"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -mwindows ../../Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32/libopengl32.a ../../Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32/libglu32.a -m32
 INCS     = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -39,6 +39,9 @@ rock.o: rock.cpp
 
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+sclog4c/sclog4c.o: sclog4c/sclog4c.c
+	$(CPP) -c sclog4c/sclog4c.c -o sclog4c/sclog4c.o $(CXXFLAGS)
 
 Earth_private.res: Earth_private.rc 
 	$(WINDRES) -i Earth_private.rc -F pe-i386 --input-format=rc -o Earth_private.res -O coff 

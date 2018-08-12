@@ -10,11 +10,15 @@
 #include <gl\gl.h>													// Header File For The OpenGL32 Library
 #include <gl\glu.h>													// Header File For The GLu32 Library
 //#include <gl\glaux.h>												// Header File For The GLaux Library
+#include <stdio.h>
+
 #include "NeHeGL.h"													// Header File For NeHeGL
 
 #include "math.h"												    // NEW: Needed For Sqrtf
 #include "ArcBall.h"												// NEW: ArcBall Header
 #include "block.hpp"
+
+#include "sclog4c/sclog4c.h"
 /*
 #pragma comment( lib, "opengl32.lib" )								// Search For OpenGL32.lib While Linking
 #pragma comment( lib, "glu32.lib" )									// Search For GLu32.lib While Linking
@@ -96,6 +100,10 @@ BOOL Initialize (GL_Window* window, Keys* keys)						// Any GL Init Code & User 
 	
 	glEnable(GL_TEXTURE_2D);	
 	
+	freopen("log.txt","a",stderr);
+		
+	sclog4c_level=SL4C_ALL;
+	
 	 for(int i=0;i<DIM;++i)
     {
     	for(int j=0;j<DIM;++j)
@@ -136,6 +144,7 @@ void Update (DWORD milliseconds)									// Perform Motion Updates Here
 			}
 		}
 	}
+
 /*
     if (isRClicked)													// If Right Mouse Clicked, Reset All Rotations
     {

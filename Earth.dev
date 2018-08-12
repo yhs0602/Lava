@@ -29,24 +29,24 @@ IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=00000001b0000000000000000
-UnitCount=10
+UnitCount=12
 
 [VersionInfo]
 Major=1
 Minor=0
 Release=0
-Build=47
+Build=71
 LanguageID=1033
 CharsetID=1252
 CompanyName=
-FileVersion=1.0.0.47
+FileVersion=1.0.0.71
 FileDescription=Earth Lava Simulator
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
-ProductVersion=1.0.0.47
+ProductVersion=1.0.0.71
 AutoIncBuildNr=1
 SyncProduct=1
 
@@ -142,6 +142,26 @@ BuildCmd=
 
 [Unit10]
 FileName=geom.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=sclog4c\sclog4c.c
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit12]
+FileName=sclog4c\sclog4c.h
 CompileCpp=1
 Folder=
 Compile=1

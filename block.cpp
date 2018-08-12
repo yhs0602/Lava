@@ -1,12 +1,14 @@
 //block.cpp
 #include "block.hpp"
 #include "geom.h"
+#include "sclog4c/sclog4c.h"
 
 Block *getBlock(ivec x);
 
 extern Block *blocks[DIM][DIM][DIM]; 
 void Block::update()
 {
+	logm(SL4C_DEBUG,"stone (%d, %d, %d) start",pos.x,pos.y,pos.z);
 	if(this->rock==Rock::air)
 	{
 		return;
@@ -27,6 +29,7 @@ void Block::update()
 	
 	vec netForce=calculateNetForce();
 	this->velocity.add(netForce);
+	logm(SL4C_DEBUG,"stone (%d, %d, %d) end",pos.x,pos.y,pos.z);
 }
 
 Block::Block(ivec pos,Rock* rck)
