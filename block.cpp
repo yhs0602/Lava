@@ -112,7 +112,7 @@ float Block::getPressure(int face)
 }
 #include <gl/gl.h>
 
-extern int texture[];
+
 GLubyte indices[]={
 0,1,2,
 0,2,3,
@@ -127,7 +127,7 @@ GLubyte indices[]={
 };
 GLfloat texCoords[]={
 	0,0,1,0,1,1,1,0
-}
+};
 
 void Block:: draw(int x,int y, int z)
 {

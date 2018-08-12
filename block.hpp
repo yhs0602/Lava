@@ -8,9 +8,10 @@
 enum TEXTURES
 {
 	LAVA,
-	END
-}
-extern int textures[END];
+	NUM_TEXTURES
+};
+
+extern int texture[NUM_TEXTURES];
 class Block
 {
 	public:
