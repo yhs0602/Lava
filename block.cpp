@@ -8,7 +8,7 @@ Block *getBlock(ivec x);
 extern Block *blocks[DIM][DIM][DIM]; 
 void Block::update()
 {
-	logm(SL4C_DEBUG,"stone (%d, %d, %d) start",pos.x,pos.y,pos.z);
+	logm(SL4C_DEBUG,"stone (%d, %d, %d) temperature: %f, velocity(%f,%f,%f)",pos.x,pos.y,pos.z,temperature,velocity.x,velocity.y,velocity.z);
 	if(this->rock==Rock::air)
 	{
 		return;
@@ -29,7 +29,6 @@ void Block::update()
 	
 	vec netForce=calculateNetForce();
 	this->velocity.add(netForce);
-	logm(SL4C_DEBUG,"stone (%d, %d, %d) end",pos.x,pos.y,pos.z);
 }
 
 Block::Block(ivec pos,Rock* rck)
